@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 #######################################################################################
 def redirect(entity):
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()	
 	mysql = "select redirectname from redirect where entityname =\"" + entity + "\""
 	cur.execute(mysql)
@@ -37,7 +37,7 @@ def getEntity(mention,entityname):
 	if mention == '':
 		return candidatelist
 	else:
-		conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+		conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 		cur = conn.cursor()
 		mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in natural language mode) limit 7"
 		#mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in boolean mode) limit 4"
@@ -63,7 +63,7 @@ def getEntity1(mention):
 	if mention == '':
 		return candidatelist
 	else:
-		conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+		conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 		cur = conn.cursor()
 		mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in natural language mode) limit 7"
 		#mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in boolean mode) limit 4"
@@ -117,7 +117,7 @@ class getEntityByWiki(threading.Thread):
 '''
 
 def get_tackbp2014_Candidate():
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select distinct docid from tac_kbp_2014"
 	cur.execute(stmt1)
@@ -173,7 +173,7 @@ def get_aidaee_Candidate():
 '''
 
 def get_tackbp2014_CandidateByWiki():
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select distinct docid from tac_kbp_2014"
 	cur.execute(stmt1)
@@ -215,7 +215,7 @@ def get_tackbp2014_CandidateByWiki():
 	return entitydoc,doccandidate
 
 def get_tackbp2014_CandidateByRule():	 	
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select distinct docid from tac_kbp_2014"
 	cur.execute(stmt1)
@@ -247,7 +247,7 @@ def get_tackbp2014_CandidateByRule():
 	return entitydoc,doccandidate
 
 def get_tackbp2014_CandidateByPriorRule():
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select distinct docid from tac_kbp_2014"
 	cur.execute(stmt1)
@@ -570,7 +570,7 @@ def getPairPath(entitypair):
 	"mysql5:a->()<-b"
 	"mysql6:a<-()->b"
 	patharray = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	mysql1 = "select entityname,linkname from pagelinks where entityname = \""+entitypair[0]+"\" and linkname = \""+entitypair[1]+"\""
 	mysql2 = "select entityname,linkname from pagelinks where entityname = \""+entitypair[1]+"\" and linkname = \""+entitypair[0]+"\""
@@ -627,7 +627,7 @@ def getPairPath1(entitypair):
 	if "\"" in entitypair[1]:
 		entitypair[1] = entitypair[1].replace("\"","")
 	patharray = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur1 = conn.cursor()
 	cur2 = conn.cursor()
 	cur3 = conn.cursor()
@@ -680,7 +680,7 @@ def getPairArrayPath1(entitypairarray):
 
 def getPairPath2(entitypair,len):
 	patharray = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '***',db ='entitylinkdb')
 	cur = conn.cursor()
 	mysql = getSQL(entitypair,len)
 	cur.execute(mysql)
