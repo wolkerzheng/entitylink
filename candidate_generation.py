@@ -12,7 +12,7 @@ import re
 '''
 def getCanByMatch(mention):
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in natural language mode) limit 5"
 	#mysql = "select entityname from labels  where match(entitystr) against (\""+mention+"\" in boolean mode) limit 4"
@@ -40,7 +40,8 @@ def getCanByMatch(mention):
 '''
 def getCanByLabels(mention):#通过Labels_en.nt文件获取候选实体
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '
+			      **',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt = "select entitystr from labels where entityname = \"" + mention + "\""
 	cur.execute(stmt)
@@ -55,7 +56,7 @@ def getCanByLabels(mention):#通过Labels_en.nt文件获取候选实体
 
 def getCanByRedirect(mention):#通过Redirect_en.nt文件获取候选实体
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt = "select redirectname from redirect where entityname = \"" + mention + "\""
 	cur.execute(stmt)
@@ -70,7 +71,7 @@ def getCanByRedirect(mention):#通过Redirect_en.nt文件获取候选实体
 
 def getCanByDisambiguation(mention):#通过Disambiguation_en.nt文件获取候选实体
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '***',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select disname  from disambiguation where entityname = \"" + mention + "\""
 	cur.execute(stmt1)
@@ -122,7 +123,7 @@ e1,e2,e3,…与 m 的共现次数，我们可以得出条件概率
 
 def getCanByPrior(mention):#通过先验概率获取所有可能的候选实体
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '***',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt = "select entity from popularity where mention = \"" + mention + "\""
 	cur.execute(stmt)
@@ -138,7 +139,7 @@ def getCanByPrior(mention):#通过先验概率获取所有可能的候选实体
 
 def getCanByPrior1(mention,maxnum):#可设置获取候选实体的最大个数
 	canlist = []
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '***',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt = "select entity,prob from popularity where mention = \"" + mention + "\""
 	cur.execute(stmt)
@@ -270,7 +271,7 @@ def get_can(mention,maxnum):
 	return returnlist
 
 def get_mention():
-	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = 'hitjin',db ='entitylinkdb')
+	conn= MySQLdb.connect(host='192.168.140.98',port=3306,user='root',passwd = '**',db ='entitylinkdb')
 	cur = conn.cursor()
 	stmt1 = "select distinct docid from tac_kbp_2014"
 	cur.execute(stmt1)
@@ -383,7 +384,7 @@ def getCandidateByEditdistance(mention,dis=6):
 	'''
     canList=[]
 
-    conn=MySQLdb.connect(host="192.168.140.98",user="root",passwd="hitjin",db="entitylinkdb")
+    conn=MySQLdb.connect(host="192.168.140.98",user="root",passwd="**",db="entitylinkdb")
     cur=conn.cursor()
     cnt=cur.execute(stmt)
     if cnt==0: return []
